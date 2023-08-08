@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+    
+<!-- blog-left-sidebar31:50-->
+
+    <body>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+        <!-- Begin Body Wrapper -->
+        <div class="body-wrapper">
+            <!-- Begin Header Area -->
+
+            <!-- Header Area End Here -->
+            <!-- Begin Li's Breadcrumb Area -->
+            <div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">Blog Left Sidebar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!-- Begin Li's Main Blog Page Area -->
+            <div class="li-main-blog-page pt-60 pb-55">
+                <div class="container">
+                    <div class="row">
+                        <!-- Begin Li's Blog Sidebar Area -->
+                        <div class="col-lg-3 order-lg-1 order-2">
+                            <div class="li-blog-sidebar-wrapper">
+                                <div class="li-blog-sidebar">
+                                    <div class="li-sidebar-search-form">
+                                        <form action="{% url 'blog-left' %}" method="get">
+                                            <input type="text" name="q" class="li-search-field" placeholder="search here">
+                                            <button type="submit" class="li-search-btn"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="li-blog-sidebar pt-25">
+                                    <h4 class="li-blog-sidebar-title">Categories</h4>
+                                    <ul class="li-blog-archive">
+                                        {% for cat in category %}
+                                            <li><a href="?{{ cat.title }}">{{ cat.title }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="li-blog-sidebar">
+                                    <h4 class="li-blog-sidebar-title">Blog Archives</h4>
+                                    <ul class="li-blog-archive">
+                                        <li><a href="#">January (10)</a></li>
+                                        <li><a href="#">February (08)</a></li>
+                                        <li><a href="#">March (07)</a></li>
+                                        <li><a href="#">April (14)</a></li>
+                                        <li><a href="#">May (10)</a></li>
+                                        <li><a href="#">June (06)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="li-blog-sidebar">
+                                    <h4 class="li-blog-sidebar-title">Recent Post</h4>
+                                    {% for rec in recent %}
+                                        <div class="li-recent-post pb-30">
+                                            <div class="li-recent-post-thumb">
+                                                <a href="{% url 'blog-details-right' rec.pk %}">
+                                                    <img class="img-full" src="{{ rec.image.url }}" alt="Li's Product Image">
+                                                </a>
+                                            </div>
+                                            <div class="li-recent-post-des">
+                                                <span><a href="{% url 'blog-details-right' rec.pk %}">{{ rec.title }}</a></span>
+                                                <span class="li-post-date">{{ rec.created_at|date }}</span>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="li-blog-sidebar">
+                                    <h4 class="li-blog-sidebar-title">Tags</h4>
+                                    <ul class="li-blog-tags">
+                                        <li><a href="#">Gaming</a></li>
+                                        <li><a href="#">Chromebook</a></li>
+                                        <li><a href="#">Refurbished</a></li>
+                                        <li><a href="#">Touchscreen</a></li>
+                                        <li><a href="#">Ultrabooks</a></li>
+                                        <li><a href="#">Sound Cards</a></li>  
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Li's Blog Sidebar Area End Here -->
+                        <!-- Begin Li's Main Content Area -->
+                        <div class="col-lg-9 order-lg-2 order-1">
+                            <div class="row li-main-content">
+                                {% for post in posts %}
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="li-blog-single-item pb-25">
+                                        <div class="li-blog-banner">
+                                            <a href="{% url 'blog-details-right' post.pk %}"><img class="img-full" src="{{ post.image.url }}" alt=""></a>
+                                        </div>
+                                        <div class="li-blog-content">
+                                            <div class="li-blog-details">
+                                                <h3 class="li-blog-heading pt-25"><a href="{% url 'blog-details-right' post.pk %}">{{ post.title }}</a></h3>
+                                                <div class="li-blog-meta">
+                                                    <a class="author" href="{% url 'blog-details-right' post.pk %}"><i class="fa fa-user"></i>{{ post.user.username }}</a>
+                                                    <a class="comment" href="{% url 'blog-details-right' post.pk %}"><i class="fa fa-comment-o"></i> {{ post.comment_set.count }} comment</a>
+                                                    <a class="post-time" href="{% url 'blog-details-right' post.pk %}"><i class="fa fa-calendar"></i> {{ post.created_at|date }}</a>
+                                                </div>
+                                                <p>{{ post.description|safe }}</p>
+                                                <a class="read-more" href="{% url 'blog-details-right' post.pk %}">Read More...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <!-- Begin Li's Pagination Area -->
+                                <div class="col-lg-12">
+                                    <div class="li-paginatoin-area text-center pt-25">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <ul class="li-pagination-box">
+                                                    <li><a class="Previous" href="#">Previous</a></li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a class="Next" href="#">Next</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Li's Pagination End Here Area -->
+                            </div>
+                        </div>
+                        <!-- Li's Main Content Area End Here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Main Blog Page Area End Here -->
+            <!-- Begin Footer Area -->
+
+            <!-- Footer Area End Here -->
+        </div>
+        <!-- Body Wrapper End Here -->
+        <!-- jQuery-V1.12.4 -->
+    </body>
+
+<!-- blog-left-sidebar31:55-->
+</html>
+{% endblock %}
