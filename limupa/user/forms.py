@@ -26,10 +26,6 @@ class ContactForm(Form):
     text = CharField()
 
 
-class CustomLoginForm(AuthenticationForm):
-    pass
-
-
 class OurTeamForm(ModelForm):
     class Meta:
         model = OurTeam

@@ -1,5 +1,6 @@
+from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic import TemplateView, CreateView
-from user.forms import ContactForm, RegisterForm, CustomLoginForm
+from user.forms import ContactForm, RegisterForm
 from django.contrib.auth.views import LoginView
 from user.models import User
 from user.utls import send_message
@@ -81,16 +82,16 @@ class Index(TemplateView):
     template_name = 'index.html'
 
 
-class LoginRegister(CreateView):
+class UserRegisterView(CreateView):
     queryset = User.objects.all()
     form_class = RegisterForm
-    template_name = 'login-register.html'
-    success_url = reverse_lazy('index')
+    template_name = 'sign_up.html'
+    success_url = reverse_lazy('sign_in')
 
 
 class UserLoginView(LoginView):
-    form_class = CustomLoginForm
-    template_name = 'login-register.html'
+    form_class = AuthenticationForm
+    template_name = 'sign_in.html'
     next_page = reverse_lazy('index')
 
 
@@ -124,30 +125,6 @@ class ShoppingCart(TemplateView):
 
 class SingleProduct(TemplateView):
     template_name = 'single-product.html'
-
-
-class SingleProductAffiliate(TemplateView):
-    template_name = 'single-product-affiliate.html'
-
-
-class SingleProductCarousel(TemplateView):
-    template_name = 'single-product-carousel.html'
-
-
-class SingleProductGalleryLeft(TemplateView):
-    template_name = 'single-product-gallery-left.html'
-
-
-class SingleProductGroup(TemplateView):
-    template_name = 'single-product-group.html'
-
-
-class SingleProductNormal(TemplateView):
-    template_name = 'single-product-normal.html'
-
-
-class SingleProductSale(TemplateView):
-    template_name = 'single-product-sale.html'
 
 
 class SingleProductTabStyleTop(TemplateView):

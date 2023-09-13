@@ -1,6 +1,6 @@
 from django.urls import path
 from shop.views import ShoppingCart, WishList, Cart, CheckOut, Compare, Contact, Faq, LoginRegister, \
-    ProductDetails, ShopLeft, SingleProductNormal, Index, SearchView
+    ProductDetails, ShopLeft, Index, SearchView
 
 # from shop.views import setcookie
 
@@ -11,7 +11,6 @@ urlpatterns = [
     path('shop/product-details/', ProductDetails.as_view(), name='product-details'),
     path('shop', ShopLeft.as_view(), name='shop'),
     path('shop/shopping-cart/', ShoppingCart.as_view(), name='shopping-cart'),
-    path('shop/single-product/', SingleProductNormal.as_view(), name='single-product-normal'),
     path('wishlist/', WishList.as_view(), name='wishlist'),
     # path('setcookie', setcookie, name='cookie'),
     path('', Index.as_view(), name='index'),

@@ -95,30 +95,6 @@ class SingleProduct(TemplateView):
     template_name = 'single-product.html'
 
 
-class SingleProductAffiliate(TemplateView):
-    template_name = 'single-product-affiliate.html'
-
-
-class SingleProductCarousel(TemplateView):
-    template_name = 'single-product-carousel.html'
-
-
-class SingleProductGalleryLeft(TemplateView):
-    template_name = 'single-product-gallery-left.html'
-
-
-class SingleProductGroup(TemplateView):
-    template_name = 'single-product-group.html'
-
-
-class SingleProductNormal(TemplateView):
-    template_name = 'single-product-normal.html'
-
-
-class SingleProductSale(TemplateView):
-    template_name = 'single-product-sale.html'
-
-
 class SingleProductTabStyleTop(TemplateView):
     template_name = 'single-product-tab-style-top.html'
 
